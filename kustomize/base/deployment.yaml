@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: demo-deployment }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: demo } }
+  template:
+    metadata: { labels: { app: demo } }
+    spec:
+      containers:
+        - name: demo
+          image: demo-image
+          ports: [ { containerPort: 8080 } ]
+          readinessProbe: { httpGet: { path: "/", port: 8080 }, initialDelaySeconds: 5 }
+          livenessProbe:  { httpGet: { path: "/", port: 8080 }, initialDelaySeconds: 10 }

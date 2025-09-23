@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+nameSuffix: -dev
+namespace: demo
+resources: [ ../../base ]
+images:
+  - name: demo-image
+    newName: ${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/demo
+    newTag: ${TAG}
+patches:
+  - target: { kind: Deployment, name: demo-deployment }
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 1
