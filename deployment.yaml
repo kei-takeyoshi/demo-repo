@@ -23,10 +23,10 @@ spec:
       containers:
         - name: demo
           # ▼ どちらか片方を使う
-          # タグ指定の例：
-          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo:latest
           # ダイジェスト固定の例（@sha256 を使う点が重要）：
-          image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:d70079a88d77ca0b230da15640beca0d15c5a09f65237b3ffa09f9c57b8af338
+          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:d70079a88d77ca0b230da15640beca0d15c5a09f65237b3ffa09f9c57b8af338
+          # タグ指定の例：
+          image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo:latest
           ports:
             - containerPort: 8080
           readinessProbe:
