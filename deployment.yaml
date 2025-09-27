@@ -22,8 +22,8 @@ spec:
       containers:
         - name: demo
           # Use either a tag or a digest (choose ONE; digest example shown)
-          image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo:latest
-          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:d70079a88d77ca0b230da15640beca0d15c5a09f65237b3ffa09f9c57b8af338
+          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo:latest
+          image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:0bed6a397347b7f0b8db6e3eebc9f974bc84e66d004c681c5f20d956440714f3
           ports:
             - containerPort: 8080
           readinessProbe:
