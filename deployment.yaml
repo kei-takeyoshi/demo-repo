@@ -1,4 +1,3 @@
-# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,24 +21,18 @@ spec:
     spec:
       containers:
         - name: demo
-          # ▼ どちらか片方を使う
-          # ダイジェスト固定の例（@sha256 を使う点が重要）：
-          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:d70079a88d77ca0b230da15640beca0d15c5a09f65237b3ffa09f9c57b8af338
-          # タグ指定の例：
+          # Use either a tag or a digest (choose ONE; digest example shown)
           image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo:latest
+          # image: asia-northeast1-docker.pkg.dev/sample-poc-468607/demo-repo/demo@sha256:d70079a88d77ca0b230da15640beca0d15c5a09f65237b3ffa09f9c57b8af338
           ports:
             - containerPort: 8080
           readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
+            httpGet: { path: "/", port: 8080 }
             initialDelaySeconds: 20
             periodSeconds: 10
             failureThreshold: 6
           livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
+            httpGet: { path: "/", port: 8080 }
             initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 3
